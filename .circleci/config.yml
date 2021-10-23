@@ -16,7 +16,7 @@ jobs:
           command: npm install
       - run:
           name: Run tests
-          command: npm test -- -u
+          command: npm test
 
 workflows:
   heroku_deploy:
