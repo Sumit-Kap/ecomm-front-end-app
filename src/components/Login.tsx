@@ -3,7 +3,7 @@ import { Button, Form } from "react-bootstrap";
 import Card from "react-bootstrap/esm/Card";
 import { useHistory } from "react-router-dom";
 import { withCookies } from "react-cookie";
-import config from "../../config/prod_config";
+import config from "../config/prod_config";
 // import { withRouter } from "react-router-dom";
 interface Props {
   // cookies:

@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Form } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
-import config from "../../config/prod_config";
+import config from "../config/prod_config";
 
 const Register = () => {
   const [firstName, setFirstName] = React.useState("");

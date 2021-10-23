@@ -1,7 +1,7 @@
 import React from "react";
 import { useCookies } from "react-cookie";
 import axios from "axios";
-import config from "../../config/prod_config";
+import config from "../config/prod_config";
 
 const Users = () => {
   const [cookies, setCookie] = useCookies(["Authorization"]);
