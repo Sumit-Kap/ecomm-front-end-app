@@ -37,7 +37,6 @@ class Home extends React.PureComponent<RouteComponentProps<Props>, State> {
     if (response.length === 0) {
       return (
         <>
-          <h1>Hello</h1>
           <div className="loader">Loader........</div>
         </>
       );

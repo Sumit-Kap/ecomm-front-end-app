@@ -1,6 +1,7 @@
 import React from "react";
 import { useCookies } from "react-cookie";
 import axios from "axios";
+import config from "../../config/prod_config";
 
 const Users = () => {
   const [cookies, setCookie] = useCookies(["Authorization"]);
@@ -9,14 +10,11 @@ const Users = () => {
   const getData = async () => {
     // console.log("print cookies value", cookies);
     try {
-      const response: any = await axios.get(
-        "http://localhost:8000/api/v1/users",
-        {
-          headers: {
-            Authorization: cookies.Authorization,
-          },
-        }
-      );
+      const response: any = await axios.get(`${config.base_url}/api/v1/users`, {
+        headers: {
+          Authorization: cookies.Authorization,
+        },
+      });
       console.log("print", response.data);
       setResults(response.data.data);
       // if (response.status === 401) {

@@ -3,6 +3,7 @@ import { Button, Form } from "react-bootstrap";
 import Card from "react-bootstrap/esm/Card";
 import { useHistory } from "react-router-dom";
 import { withCookies } from "react-cookie";
+import config from "../../config/prod_config";
 // import { withRouter } from "react-router-dom";
 interface Props {
   // cookies:
@@ -19,7 +20,7 @@ const Login = (props: any) => {
   const handleChange = async () => {
     try {
       const response = await fetch(
-        "http://localhost:8000/api/v1/authenticateUser",
+        `${config.base_url}/api/v1/authenticateUser`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Form } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
+import config from "../../config/prod_config";
 
 const Register = () => {
   const [firstName, setFirstName] = React.useState("");
@@ -11,7 +12,7 @@ const Register = () => {
 
   const handleChange = async () => {
     try {
-      const response = await fetch("http://localhost:8000/api/v1/postUsers", {
+      const response = await fetch(`${config.base_url}/api/v1/postUsers`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
