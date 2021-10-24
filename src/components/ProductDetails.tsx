@@ -2,6 +2,7 @@ import * as React from "react";
 import { Button } from "react-bootstrap";
 import { ResponseData } from "./Home";
 import Loader from "./Loaders";
+import config from "../config/prod_config";
 const ProductDetails = (props) => {
   const [product, setProduct] = React.useState<ResponseData>();
   const getProductData = async () => {
@@ -22,16 +23,21 @@ const ProductDetails = (props) => {
     document.body.appendChild(script);
   }, []);
   const invokePayment = React.useCallback(
-    (price: number, id: number) => {
+    async (price: number, id: number) => {
+      const response = await fetch(
+        `${config.base_url}/api/v1/create_order/${id}`
+      );
+      const data = await response.json();
+      console.log(data.data);
       console.log(process.env.REACT_APP_RAZORPAY_KEY);
       var options = {
         key: process.env.REACT_APP_RAZORPAY_KEY, // Enter the Key ID generated from the Dashboard
-        amount: price * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        amount: data.data.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
         currency: "INR",
         name: "Ecomm",
         description: "Building payment flow for Ecomm app",
         image: "https://example.com/your_logo",
-        order_id: "order_9A33XWu170gUtm", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        order_id: data.data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
         callback_url: "https://eneqd3r9zrjok.x.pipedream.net/", // success url
         prefill: {
           name: "Gaurav Kumar",
@@ -45,6 +51,7 @@ const ProductDetails = (props) => {
           color: "#3399cc",
         },
       };
+      console.log(options);
       var transaction = new (window as any).Razorpay(options);
       transaction.open();
     },
