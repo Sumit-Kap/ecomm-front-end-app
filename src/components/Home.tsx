@@ -1,7 +1,8 @@
 import React from "react";
 import { Link, RouteComponentProps, withRouter } from "react-router-dom";
+import Loader from "./Loaders";
 interface Props {}
-interface ResponseData {
+export interface ResponseData {
   id: number;
   price: number;
   description: string;
@@ -35,11 +36,7 @@ class Home extends React.PureComponent<RouteComponentProps<Props>, State> {
     const { response } = this.state;
     // console.log("print ", response);
     if (response.length === 0) {
-      return (
-        <>
-          <div className="loader">Loader........</div>
-        </>
-      );
+      return <Loader />;
     }
     return (
       <div>
@@ -50,10 +47,10 @@ class Home extends React.PureComponent<RouteComponentProps<Props>, State> {
               className="product-cards"
               data-test-id={index}
               onClick={() => {
-                // this.setState({
-                //   showOtherData: true,
-                // });
-                // this.props.history.push(`products/${resp.id}`);
+                this.setState({
+                  showOtherData: true,
+                });
+                this.props.history.push(`products/${resp.id}`);
               }}
             >
               <img src={resp.image} />
@@ -67,4 +64,4 @@ class Home extends React.PureComponent<RouteComponentProps<Props>, State> {
   }
 }
 
-export default Home;
+export default withRouter(Home);
