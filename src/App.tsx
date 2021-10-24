@@ -10,6 +10,7 @@ import ProductDetails from "./components/ProductDetails";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Users from "./components/Users";
+import OrderPaymentSuccess from "./OrderPaymentSuccess";
 // import "bootstrap/dist/css/bootstrap.min.css";
 
 export default class App extends React.Component {
@@ -25,6 +26,11 @@ export default class App extends React.Component {
           <Route component={Login} path="/sign-in" exact />
           <Route component={Register} path="/sign-up" exact />
           <Route component={Users} path="/users" exact />
+          <Route
+            component={OrderPaymentSuccess}
+            path="/payment/success"
+            exact
+          />
         </Switch>
       </React.Fragment>
     );

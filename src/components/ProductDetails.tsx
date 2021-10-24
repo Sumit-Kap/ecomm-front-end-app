@@ -38,7 +38,8 @@ const ProductDetails = (props) => {
         description: "Building payment flow for Ecomm app",
         image: "https://example.com/your_logo",
         order_id: data.data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-        callback_url: "https://eneqd3r9zrjok.x.pipedream.net/", // success url
+        callback_url:
+          "https://ecomm-frontend-app.herokuapp.com/payment/success", // success url
         prefill: {
           name: "Gaurav Kumar",
           email: "gaurav.kumar@example.com",
