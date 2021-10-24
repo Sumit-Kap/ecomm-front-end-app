@@ -7,6 +7,7 @@ import {
 } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
+import { BrowserRouter } from "react-router-dom";
 import Home from "../Home";
 import products from "../__mocks__/products";
 
@@ -21,7 +22,11 @@ describe("Home Test Scenario", () => {
   });
   afterEach(cleanup);
   it("Look for loading bar in the component", async () => {
-    const { getByText, getByTestId, container } = render(<Home />);
+    const { getByText, getByTestId, container } = render(
+      <BrowserRouter>
+        <Home />
+      </BrowserRouter>
+    );
 
     expect(getByText("Loader........")).toBeDefined();
     // waitFor(expect(get("input"));
